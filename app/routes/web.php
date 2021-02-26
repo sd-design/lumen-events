@@ -2,6 +2,7 @@
 
 /** @var \Laravel\Lumen\Routing\Router $router */
 
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -13,25 +14,12 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
+$router->get('/','EventsController@index');
 
-$router->get('foo', function () {
-    return 'Hello World';
-});
+$router->get('/events/{id}','EventsController@events');
 
-$router->post('foo', function () {
-    return 'Hello World of POST';
-});
-$router->get('users/{id}', function ($id) {
-    return 'User '.$id;
-});
-$router->get('posts/{postId}/comments/{commentId}', function ($postId, $commentId) {
-    return 'Post ID '.$postId." -- comment: ".$commentId;
-});
+$router->get('/places/{id}','EventsController@places');
 
-$router->get('myrouter', 'UserController@hello');
-$router->get('json', 'ReqController@update');
+$router->get('test','UserController@test');
 
-$router->get('user/{id}', 'UserController@show');
+$router->post('reserve', 'UserController@reserve');
