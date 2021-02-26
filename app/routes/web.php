@@ -1,5 +1,7 @@
 <?php
 
+/** @var \Laravel\Lumen\Routing\Router $router */
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -22,7 +24,7 @@ $router->get('foo', function () {
 $router->post('foo', function () {
     return 'Hello World of POST';
 });
-$router->get('user/{id}', function ($id) {
+$router->get('users/{id}', function ($id) {
     return 'User '.$id;
 });
 $router->get('posts/{postId}/comments/{commentId}', function ($postId, $commentId) {
