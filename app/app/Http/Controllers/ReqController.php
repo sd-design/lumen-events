@@ -2,20 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Req;
-
-
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ReqController extends Controller
 {
     /**
-     * 
+     * Store a new user.
+     *
+     * @param  Request  $request
+     * @return Response
      */
     public function update()
     {
-        //$client = new \GuzzleHttp\Client();
-        $response =  $client->request('GET', 'http://localhost:3000/options');
-        $content =  $response->getBody();
-        return $content;
+        $response = Http::get('http://localhost:3000/profile');
+        return $response;
+       
+
+        //
     }
 }
