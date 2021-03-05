@@ -14,11 +14,12 @@ class EventsController extends Controller
      * @param  Request  $request
      * @return Response
      */
+    
 
      public function index()
      {
         $response = Http::withHeaders([
-            'Authorization' => 'token=f72e02929b79c96daf9e336e0a5cdb8059e60685'
+            self::getToken()
         ])->get('https://leadbook.ru/test-task-api/shows');
         $shows = json_decode($response);
         return view('shows', ['title' => 'Список мероприятий','shows' => $shows]);
@@ -28,7 +29,7 @@ class EventsController extends Controller
     public function events($id)
     {
         $response = Http::withHeaders([
-            'Authorization' => 'token=f72e02929b79c96daf9e336e0a5cdb8059e60685'
+            self::getToken()
         ])->get('https://leadbook.ru/test-task-api/shows/'.$id.'/events');
         $events = json_decode($response);
         return view('events', ['title' => 'Список событий мероприятия','showId'=>$id,'events' => $events]);
@@ -37,7 +38,7 @@ class EventsController extends Controller
     public function places($id)
     {
         $response = Http::withHeaders([
-            'Authorization' => 'token=f72e02929b79c96daf9e336e0a5cdb8059e60685'
+            self::getToken()
         ])->get('https://leadbook.ru/test-task-api/events/'.$id.'/places');
         $places = json_decode($response);
         return view('places', ['title' => 'Список мест события #'.$id,'places' => $places, 'eventId'=>$id, 'link_event'=>'']);
@@ -46,7 +47,7 @@ class EventsController extends Controller
     public function reserve($id)
     {
         $response = Http::withHeaders([
-            'Authorization' => 'token=f72e02929b79c96daf9e336e0a5cdb8059e60685'
+            self::getToken()
         ])->get('https://leadbook.ru/test-task-api/events/'.$id.'/places');
         $places = json_decode($response);
         return view('places', ['title' => 'Список мест события #'.$id,'places' => $places, 'eventId'=>$id, 'link_event'=>'']);

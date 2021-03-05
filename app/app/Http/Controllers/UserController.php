@@ -29,7 +29,7 @@ class UserController extends Controller
         $name = $request->input('name');
         $places = $request->input('places');
         $remoteResponse = Http::withHeaders([
-            'Authorization' => 'token=f72e02929b79c96daf9e336e0a5cdb8059e60685'
+            $this->getToken()
         ])->asForm()->post('https://leadbook.ru/test-task-api/events/'.$eventId.'/reserve', [
             'name' => $name,
             'places' => $places,
@@ -50,7 +50,7 @@ class UserController extends Controller
         $name = 'Alex';
         $places = '[1,2,3]';
         $response = Http::withHeaders([
-            'Authorization' => 'token=f72e02929b79c96daf9e336e0a5cdb8059e60685'
+            $this->getToken()
         ])->asForm()->post('https://leadbook.ru/test-task-api/events/'.$eventId.'/reserve', [
             'name' => $name,
             'places' => $places,
